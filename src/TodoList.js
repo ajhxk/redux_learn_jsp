@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import store from './store'
 import TodoListUI from './TodoListUIFN'
 import {
@@ -7,6 +7,8 @@ import {
     getAddItemAction,
     getDeleItemAction,
     getInitListAction,
+    getTodoList,
+    getMyListAction,
 } from './store/actionCreators'
 
 
@@ -34,12 +36,24 @@ class TodoList extends Component {
         );
     }
 
+    // componentDidMount () {
+    //     axios.get('https://www.studyinghome.com/mock/5e55c2732cb0d073b813a478/redux_learn/getList').then(res => {
+    //         const data = res.data;
+    //         const action = getInitListAction(data)
+    //         store.dispatch(action)
+    //     })
+    // }
+
+    // redux-thunk
+    // componentDidMount () {
+    //     const action = getTodoList()
+    //     store.dispatch(action);
+    // }
+
     componentDidMount () {
-        axios.get('https://www.studyinghome.com/mock/5e55c2732cb0d073b813a478/redux_learn/getList').then(res => {
-            const data = res.data;
-            const action = getInitListAction(data)
-            store.dispatch(action)
-        })
+        const action = getMyListAction()
+        store.dispatch(action)
+
     }
 
     handleOnAddclick () {
